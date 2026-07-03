@@ -50,7 +50,10 @@
     function drawCard() {
       const randomIndex = Math.floor(Math.random() * deck.length);
       const card = deck[randomIndex];
-      document.getElementById("card").innerText = card;
+     document.getElementById("card").innerHTML = `
+  <h2>${card.name}</h2>
+  <img src="${card.img}" style="width:200px; border-radius:12px; margin-top:10px;">
+`;
     }
   </script>
 
