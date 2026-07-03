@@ -2,84 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Virtual Tarot Deck</title>
+  <title>Soft Witch Tarot</title>
+
   <style>
     body {
-      background: #0b0b1a;
-      color: #f5e9ff;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a0f2e, #2a1140);
+      color: #ffe6f7;
+      font-family: "Arial", sans-serif;
       text-align: center;
       padding: 50px;
     }
 
+    h1 {
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
     button {
-      padding: 15px 25px;
-      font-size: 18px;
+      padding: 12px 20px;
+      font-size: 16px;
       border: none;
-      border-radius: 10px;
+      border-radius: 999px;
       cursor: pointer;
-      background: #6c3cff;
+      background: #ff7ac8;
       color: white;
-      margin-top: 20px;
+      margin: 8px;
+      box-shadow: 0 0 15px rgba(255, 122, 200, 0.4);
     }
 
     #card {
       margin-top: 40px;
-      font-size: 24px;
-      min-height: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
     }
 
-    img {
-      width: 220px;
-      border-radius: 12px;
-      margin-top: 10px;
-      box-shadow: 0 0 20px rgba(108, 60, 255, 0.4);
+    .tarot-card {
+      width: 160px;
+      height: 260px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffb3e6, #c084fc);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
     }
+
+    .symbol {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 14px;
+      background: rgba(0,0,0,0.25);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
   </style>
 </head>
 
 <body>
 
-  <h1>🔮 Virtual Tarot Deck</h1>
+  <h1>💖 Soft Witch Tarot</h1>
 
-  <button onclick="drawCard()">Draw a Card</button>
+  <button onclick="drawOne()">1 Card</button>
+  <button onclick="drawThree()">3 Card Spread</button>
+  <button onclick="drawFive()">5 Card Spread</button>
 
   <div id="card"></div>
 
   <script>
+
     const deck = [
-      { name: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg" },
-      { name: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
-      { name: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_02_High_Priestess.jpg" },
-      { name: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_03_Empress.jpg" },
-      { name: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/9/9c/RWS_Tarot_04_Emperor.jpg" },
-      { name: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg" },
-      { name: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg" },
-      { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg" },
-      { name: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg" },
-      { name: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg" },
-      { name: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg" },
-      { name: "The Hanged Man", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg" },
-      { name: "Death", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" },
-      { name: "Temperance", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg" },
-      { name: "The Devil", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg" },
-      { name: "The Tower", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg" },
-      { name: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg" },
-      { name: "The Moon", img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg" },
-      { name: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" },
-      { name: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg" },
-      { name: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" }
+      { name: "The Dreamer", symbol: "🌙" },
+      { name: "The Spark", symbol: "✨" },
+      { name: "The Mirror", symbol: "🪞" },
+      { name: "The Bloom", symbol: "🌸" },
+      { name: "The Flame", symbol: "🔥" },
+      { name: "The Tide", symbol: "🌊" },
+      { name: "The Crown", symbol: "👑" },
+      { name: "The Whisper", symbol: "🕊️" },
+      { name: "The Rose Veil", symbol: "🌹" },
+      { name: "The Night Bloom", symbol: "🌌" },
+      { name: "The Heart", symbol: "💗" },
+      { name: "The Starling", symbol: "⭐" }
     ];
 
-    function drawCard() {
-      const randomIndex = Math.floor(Math.random() * deck.length);
-      const card = deck[randomIndex];
-
-      document.getElementById("card").innerHTML = `
-        <h2>${card.name}</h2>
-        <img src="${card.img}" alt="${card.name}">
-      `;
+    function getCard() {
+      return deck[Math.floor(Math.random() * deck.length)];
     }
+
+    function render(cards) {
+      document.getElementById("card").innerHTML = cards.map(c => `
+        <div class="tarot-card">
+          <div class="symbol">${c.symbol}</div>
+          <div class="name">${c.name}</div>
+        </div>
+      `).join("");
+    }
+
+    function drawOne() {
+      render([getCard()]);
+    }
+
+    function drawThree() {
+      render([getCard(), getCard(), getCard()]);
+    }
+
+    function drawFive() {
+      render([getCard(), getCard(), getCard(), getCard(), getCard()]);
+    }
+
   </script>
 
 </body>
