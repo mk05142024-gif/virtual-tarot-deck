@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Tarot Deck</title>
+  <style>
+    body {
+      background: #0b0b1a;
+      color: #f5e9ff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #6c3cff;
+      color: white;
+    }
+
+    #card {
+      margin-top: 40px;
+      font-size: 24px;
+      min-height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🔮 Virtual Tarot Deck</h1>
+
+  <button onclick="drawCard()">Draw a Card</button>
+
+  <div id="card"></div>
+
+  <script>
+    const deck = [
+      "The Fool", "The Magician", "The High Priestess",
+      "The Empress", "The Emperor", "The Lovers",
+      "The Chariot", "Strength", "The Hermit",
+      "Wheel of Fortune", "Justice", "The Hanged Man",
+      "Death", "Temperance", "The Devil",
+      "The Tower", "The Star", "The Moon", "The Sun",
+      "Judgement", "The World"
+    ];
+
+    function drawCard() {
+      const randomIndex = Math.floor(Math.random() * deck.length);
+      const card = deck[randomIndex];
+      document.getElementById("card").innerText = card;
+    }
+  </script>
+
+</body>
+</html>
