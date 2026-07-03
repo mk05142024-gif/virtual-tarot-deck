@@ -20,12 +20,20 @@
       cursor: pointer;
       background: #6c3cff;
       color: white;
+      margin-top: 20px;
     }
 
     #card {
       margin-top: 40px;
       font-size: 24px;
       min-height: 40px;
+    }
+
+    img {
+      width: 220px;
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 0 20px rgba(108, 60, 255, 0.4);
     }
   </style>
 </head>
@@ -39,21 +47,38 @@
   <div id="card"></div>
 
   <script>
-   const deck = [
-  { name: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg" },
-  { name: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
-  { name: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_02_High_Priestess.jpg" },
-  { name: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/9/9c/RWS_Tarot_04_Emperor.jpg" }
-];
+    const deck = [
+      { name: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg" },
+      { name: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
+      { name: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_02_High_Priestess.jpg" },
+      { name: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_03_Empress.jpg" },
+      { name: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/9/9c/RWS_Tarot_04_Emperor.jpg" },
+      { name: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg" },
+      { name: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg" },
+      { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg" },
+      { name: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg" },
+      { name: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg" },
+      { name: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg" },
+      { name: "The Hanged Man", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg" },
+      { name: "Death", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" },
+      { name: "Temperance", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg" },
+      { name: "The Devil", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg" },
+      { name: "The Tower", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg" },
+      { name: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg" },
+      { name: "The Moon", img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg" },
+      { name: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" },
+      { name: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg" },
+      { name: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" }
     ];
 
     function drawCard() {
       const randomIndex = Math.floor(Math.random() * deck.length);
       const card = deck[randomIndex];
-     document.getElementById("card").innerHTML = `
-  <h2>${card.name}</h2>
-  <img src="${card.img}" style="width:200px; border-radius:12px; margin-top:10px;">
-`;
+
+      document.getElementById("card").innerHTML = `
+        <h2>${card.name}</h2>
+        <img src="${card.img}" alt="${card.name}">
+      `;
     }
   </script>
 
