@@ -23,8 +23,8 @@ function shuffleDeck() {
   spreadSize = 0;
 
   document.getElementById("spread").innerHTML = "";
-
-  alert("✨ The deck has been shuffled. Choose your spread.");
+  document.getElementById("summary").innerHTML =
+    "✨ The deck has been shuffled. Choose a spread.";
 }
 
 function startReading(size) {
@@ -36,42 +36,50 @@ function startReading(size) {
   spreadSize = size;
 
   document.getElementById("spread").innerHTML = "";
-
-  alert(`Choose ${size} cards intuitively.`);
+  document.getElementById("summary").innerHTML =
+    `🔮 Choose ${size} cards by clicking the deck.`;
 }
 
-document.getElementById("deck").addEventListener("click", drawCard);
+// attach click AFTER page loads
+window.onload = function () {
+  const deckEl = document.getElementById("deck");
+
+  if (deckEl) {
+    deckEl.addEventListener("click", drawCard);
+  }
+};
 
 function drawCard() {
   if (spreadSize === 0) {
-    alert("Shuffle and select a spread first.");
+    document.getElementById("summary").innerHTML =
+      "⚠️ Please shuffle and select a spread first.";
     return;
   }
 
   if (currentSpread.length >= spreadSize) return;
 
   const card = shuffledDeck.pop();
-
   currentSpread.push(card);
 
   renderSpread();
-}
-
-function renderSpread() {
-  const spread = document.getElementById("spread");
-
-  spread.innerHTML = currentSpread.map(c => {
-    return `<div class="card">${c}</div>`;
-  }).join("");
 
   if (currentSpread.length === spreadSize) {
     showSummary();
   }
 }
 
+function renderSpread() {
+  document.getElementById("spread").innerHTML = currentSpread
+    .map(card => `<div class="card">${card}</div>`)
+    .join("");
+}
+
 function showSummary() {
   document.getElementById("summary").innerHTML = `
-    <h2>✨ Reading Complete</h2>
-    <p>This spread reflects your current energetic alignment. Reflect on how each card connects rather than standing alone.</p>
+    ✨ <h2>Reading Complete</h2>
+    <p>
+      This spread reflects the current energetic pattern of your question.
+      Notice how each card interacts with the others rather than standing alone.
+    </p>
   `;
 }
