@@ -1,4 +1,4 @@
-console.log("🌙 SCRIPT IS RUNNING");
+console.log("🌙 script.js loaded successfully");
 
 const deck = [
   "The Dreamer 🌙",
@@ -19,6 +19,7 @@ let shuffledDeck = [];
 let currentSpread = [];
 let spreadSize = 0;
 
+// 🔮 Shuffle deck
 function shuffleDeck() {
   shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
   currentSpread = [];
@@ -29,6 +30,7 @@ function shuffleDeck() {
     "✨ The deck has been shuffled. Choose a spread.";
 }
 
+// 🌙 Start reading (choose spread size)
 function startReading(size) {
   if (shuffledDeck.length === 0) {
     shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
@@ -42,10 +44,11 @@ function startReading(size) {
     `🔮 Choose ${size} cards by clicking the deck.`;
 }
 
+// 🃏 Draw a card when deck is clicked
 function drawCard() {
   if (spreadSize === 0) {
     document.getElementById("summary").innerHTML =
-      "⚠️ Please shuffle and select a spread first.";
+      "✨ Please shuffle and choose a spread first.";
     return;
   }
 
@@ -61,27 +64,29 @@ function drawCard() {
   }
 }
 
+// ✨ Render cards in spread
 function renderSpread() {
   document.getElementById("spread").innerHTML = currentSpread
     .map(card => `<div class="card">${card}</div>`)
     .join("");
 }
 
+// 🌌 Final reading message
 function showSummary() {
   document.getElementById("summary").innerHTML = `
-    ✨ <h2>Reading Complete</h2>
+    <h2>✨ Reading Complete</h2>
     <p>
-      This spread reflects the energetic pattern of your situation.
-      Each card gains meaning through its relationship to the others.
+      The cards reflect a pattern, not a prediction.
+      Look at how they speak to each other, not just individually.
     </p>
   `;
 }
 
-// Attach click after page loads
-window.onload = function () {
+// 🧿 Attach click AFTER page loads
+window.addEventListener("DOMContentLoaded", () => {
   const deckEl = document.getElementById("deck");
 
   if (deckEl) {
     deckEl.addEventListener("click", drawCard);
   }
-};
+});
