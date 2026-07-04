@@ -2,124 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Soft Witch Tarot</title>
+  <title>Celestial Arcana</title>
 
-  <style>
-    body {
-      background: linear-gradient(135deg, #1a0f2e, #2a1140);
-      color: #ffe6f7;
-      font-family: "Arial", sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-
-    h1 {
-      font-weight: 300;
-      letter-spacing: 2px;
-    }
-
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      background: #ff7ac8;
-      color: white;
-      margin: 8px;
-      box-shadow: 0 0 15px rgba(255, 122, 200, 0.4);
-    }
-
-    #card {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .tarot-card {
-      width: 160px;
-      height: 260px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #ffb3e6, #c084fc);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .symbol {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .name {
-      font-size: 14px;
-      background: rgba(0,0,0,0.25);
-      padding: 4px 8px;
-      border-radius: 999px;
-    }
-
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <h1>💖 Soft Witch Tarot</h1>
+  <div class="app">
 
-  <button onclick="drawOne()">1 Card</button>
-  <button onclick="drawThree()">3 Card Spread</button>
-  <button onclick="drawFive()">5 Card Spread</button>
+    <h1>✨ Celestial Arcana ✨</h1>
+    <p class="subtitle">Read the stars. Reveal the self.</p>
 
-  <div id="card"></div>
+    <div class="controls">
+      <button onclick="shuffleDeck()">✨ Shuffle Deck</button>
+      <button onclick="startReading(3)">3 Card Spread</button>
+      <button onclick="startReading(5)">5 Card Spread</button>
+    </div>
 
-  <script>
+    <div id="table">
+      <div id="deck"></div>
+      <div id="spread"></div>
+    </div>
 
-    const deck = [
-      { name: "The Dreamer", symbol: "🌙" },
-      { name: "The Spark", symbol: "✨" },
-      { name: "The Mirror", symbol: "🪞" },
-      { name: "The Bloom", symbol: "🌸" },
-      { name: "The Flame", symbol: "🔥" },
-      { name: "The Tide", symbol: "🌊" },
-      { name: "The Crown", symbol: "👑" },
-      { name: "The Whisper", symbol: "🕊️" },
-      { name: "The Rose Veil", symbol: "🌹" },
-      { name: "The Night Bloom", symbol: "🌌" },
-      { name: "The Heart", symbol: "💗" },
-      { name: "The Starling", symbol: "⭐" }
-    ];
+    <div id="summary"></div>
 
-    function getCard() {
-      return deck[Math.floor(Math.random() * deck.length)];
-    }
+  </div>
 
-    function render(cards) {
-      document.getElementById("card").innerHTML = cards.map(c => `
-        <div class="tarot-card">
-          <div class="symbol">${c.symbol}</div>
-          <div class="name">${c.name}</div>
-        </div>
-      `).join("");
-    }
-
-    function drawOne() {
-      render([getCard()]);
-    }
-
-    function drawThree() {
-      render([getCard(), getCard(), getCard()]);
-    }
-
-    function drawFive() {
-      render([getCard(), getCard(), getCard(), getCard(), getCard()]);
-    }
-
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
