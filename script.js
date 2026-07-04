@@ -1,3 +1,5 @@
+console.log("🌙 SCRIPT IS RUNNING");
+
 const deck = [
   "The Dreamer 🌙",
   "The Spark ✨",
@@ -40,15 +42,6 @@ function startReading(size) {
     `🔮 Choose ${size} cards by clicking the deck.`;
 }
 
-// attach click AFTER page loads
-window.onload = function () {
-  const deckEl = document.getElementById("deck");
-
-  if (deckEl) {
-    deckEl.addEventListener("click", drawCard);
-  }
-};
-
 function drawCard() {
   if (spreadSize === 0) {
     document.getElementById("summary").innerHTML =
@@ -78,8 +71,17 @@ function showSummary() {
   document.getElementById("summary").innerHTML = `
     ✨ <h2>Reading Complete</h2>
     <p>
-      This spread reflects the current energetic pattern of your question.
-      Notice how each card interacts with the others rather than standing alone.
+      This spread reflects the energetic pattern of your situation.
+      Each card gains meaning through its relationship to the others.
     </p>
   `;
 }
+
+// Attach click after page loads
+window.onload = function () {
+  const deckEl = document.getElementById("deck");
+
+  if (deckEl) {
+    deckEl.addEventListener("click", drawCard);
+  }
+};
