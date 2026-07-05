@@ -1,6 +1,8 @@
 console.log("🌙 script.js loaded successfully");
 
+// 🃏 FULL TAROT STRUCTURE (we are building toward 78 cards)
 const deck = [
+  // 🌙 MAJOR ARCANA (starting set)
   {
     name: "The Fool 🌙",
     meaning: "Beginnings, innocence, trust, stepping into the unknown.",
@@ -50,6 +52,29 @@ const deck = [
     name: "The Sun ☀️",
     meaning: "Joy, clarity, success, vitality.",
     revealed: false
+  },
+
+  // 🌿 PLACEHOLDER MINOR ARCANA (for structure expansion)
+  // These are simplified for now — we will expand later into full suits
+  {
+    name: "Ace of Cups 💧",
+    meaning: "Emotional beginnings, love, intuition awakening.",
+    revealed: false
+  },
+  {
+    name: "Ace of Wands 🔥",
+    meaning: "Inspiration, creative spark, new passion.",
+    revealed: false
+  },
+  {
+    name: "Ace of Swords ⚔️",
+    meaning: "Clarity, truth, mental breakthrough.",
+    revealed: false
+  },
+  {
+    name: "Ace of Pentacles 🌿",
+    meaning: "New opportunity, stability, material beginnings.",
+    revealed: false
   }
 ];
 
@@ -82,7 +107,7 @@ function startReading(size) {
     `🔮 Choose ${size} cards by clicking the deck.`;
 }
 
-// 🃏 Draw a card
+// 🃏 Draw card from deck
 function drawCard() {
   if (spreadSize === 0) {
     document.getElementById("summary").innerHTML =
@@ -102,13 +127,13 @@ function drawCard() {
   }
 }
 
-// ✨ Toggle reveal on click
+// ✨ Toggle reveal
 function toggleReveal(index) {
   currentSpread[index].revealed = !currentSpread[index].revealed;
   renderSpread();
 }
 
-// ✨ Render spread (flip behavior simulated)
+// ✨ Render spread
 function renderSpread() {
   document.getElementById("spread").innerHTML = currentSpread
     .map((card, index) => `
@@ -125,13 +150,13 @@ function showSummary() {
   document.getElementById("summary").innerHTML = `
     <h2>✨ Reading Complete</h2>
     <p>
-      Now look at what you revealed, not just what you drew.
-      The story is in the pattern of what opened and what stayed hidden.
+      The story is now forming across ${currentSpread.length} cards.
+      Notice patterns, repeats, and emotional flow.
     </p>
   `;
 }
 
-// 🧿 Attach click
+// 🧿 Attach deck click
 window.addEventListener("DOMContentLoaded", () => {
   const deckEl = document.getElementById("deck");
 
@@ -140,6 +165,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// 🌙 expose functions to HTML buttons
 window.shuffleDeck = shuffleDeck;
 window.startReading = startReading;
 window.drawCard = drawCard;
