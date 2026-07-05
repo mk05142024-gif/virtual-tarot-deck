@@ -1,16 +1,46 @@
 console.log("🌙 script.js loaded successfully");
 
 const deck = [
-  "The Fool 🌙",
-  "The Magician ✨",
-  "The High Priestess 🪞",
-  "The Empress 🌸",
-  "The Emperor 👑",
-  "The Lovers 💗",
-  "The Chariot 🌊",
-  "The Star ⭐",
-  "The Moon 🌙",
-  "The Sun ☀️"
+  {
+    name: "The Fool 🌙",
+    meaning: "Beginnings, innocence, trust, stepping into the unknown."
+  },
+  {
+    name: "The Magician ✨",
+    meaning: "Manifestation, skill, turning ideas into reality."
+  },
+  {
+    name: "The High Priestess 🪞",
+    meaning: "Intuition, mystery, inner knowing."
+  },
+  {
+    name: "The Empress 🌸",
+    meaning: "Abundance, creation, nurturing energy."
+  },
+  {
+    name: "The Emperor 👑",
+    meaning: "Structure, control, stability, leadership."
+  },
+  {
+    name: "The Lovers 💗",
+    meaning: "Connection, choice, alignment of hearts."
+  },
+  {
+    name: "The Chariot 🌊",
+    meaning: "Drive, willpower, forward movement."
+  },
+  {
+    name: "The Star ⭐",
+    meaning: "Hope, healing, renewal, guidance."
+  },
+  {
+    name: "The Moon 🌙",
+    meaning: "Illusion, intuition, subconscious emotions."
+  },
+  {
+    name: "The Sun ☀️",
+    meaning: "Joy, clarity, success, vitality."
+  }
 ];
 
 let shuffledDeck = [];
@@ -65,7 +95,12 @@ function drawCard() {
 // ✨ Render cards in spread
 function renderSpread() {
   document.getElementById("spread").innerHTML = currentSpread
-    .map(card => `<div class="card">${card}</div>`)
+    .map(card => `
+      <div class="card">
+        <h3>${card.name}</h3>
+        <p>${card.meaning}</p>
+      </div>
+    `)
     .join("");
 }
 
