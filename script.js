@@ -3,43 +3,53 @@ console.log("🌙 script.js loaded successfully");
 const deck = [
   {
     name: "The Fool 🌙",
-    meaning: "Beginnings, innocence, trust, stepping into the unknown."
+    meaning: "Beginnings, innocence, trust, stepping into the unknown.",
+    revealed: false
   },
   {
     name: "The Magician ✨",
-    meaning: "Manifestation, skill, turning ideas into reality."
+    meaning: "Manifestation, skill, turning ideas into reality.",
+    revealed: false
   },
   {
     name: "The High Priestess 🪞",
-    meaning: "Intuition, mystery, inner knowing."
+    meaning: "Intuition, mystery, inner knowing.",
+    revealed: false
   },
   {
     name: "The Empress 🌸",
-    meaning: "Abundance, creation, nurturing energy."
+    meaning: "Abundance, creation, nurturing energy.",
+    revealed: false
   },
   {
     name: "The Emperor 👑",
-    meaning: "Structure, control, stability, leadership."
+    meaning: "Structure, control, stability, leadership.",
+    revealed: false
   },
   {
     name: "The Lovers 💗",
-    meaning: "Connection, choice, alignment of hearts."
+    meaning: "Connection, choice, alignment of hearts.",
+    revealed: false
   },
   {
     name: "The Chariot 🌊",
-    meaning: "Drive, willpower, forward movement."
+    meaning: "Drive, willpower, forward movement.",
+    revealed: false
   },
   {
     name: "The Star ⭐",
-    meaning: "Hope, healing, renewal, guidance."
+    meaning: "Hope, healing, renewal, guidance.",
+    revealed: false
   },
   {
     name: "The Moon 🌙",
-    meaning: "Illusion, intuition, subconscious emotions."
+    meaning: "Illusion, intuition, subconscious emotions.",
+    revealed: false
   },
   {
     name: "The Sun ☀️",
-    meaning: "Joy, clarity, success, vitality."
+    meaning: "Joy, clarity, success, vitality.",
+    revealed: false
   }
 ];
 
@@ -58,7 +68,7 @@ function shuffleDeck() {
     "✨ The deck has been shuffled. Choose a spread.";
 }
 
-// 🌙 Start reading (choose spread size)
+// 🌙 Start reading
 function startReading(size) {
   if (shuffledDeck.length === 0) {
     shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
@@ -72,7 +82,7 @@ function startReading(size) {
     `🔮 Choose ${size} cards by clicking the deck.`;
 }
 
-// 🃏 Draw a card when deck is clicked
+// 🃏 Draw a card
 function drawCard() {
   if (spreadSize === 0) {
     document.getElementById("summary").innerHTML =
@@ -92,30 +102,36 @@ function drawCard() {
   }
 }
 
-// ✨ Render cards in spread
+// ✨ Toggle reveal on click
+function toggleReveal(index) {
+  currentSpread[index].revealed = !currentSpread[index].revealed;
+  renderSpread();
+}
+
+// ✨ Render spread (flip behavior simulated)
 function renderSpread() {
   document.getElementById("spread").innerHTML = currentSpread
-    .map(card => `
-      <div class="card">
+    .map((card, index) => `
+      <div class="card" onclick="toggleReveal(${index})">
         <h3>${card.name}</h3>
-        <p>${card.meaning}</p>
+        <p>${card.revealed ? card.meaning : "Click to reveal ✨"}</p>
       </div>
     `)
     .join("");
 }
 
-// 🌌 Final reading message
+// 🌌 Final summary
 function showSummary() {
   document.getElementById("summary").innerHTML = `
     <h2>✨ Reading Complete</h2>
     <p>
-      The cards reflect a pattern, not a prediction.
-      Look at how they speak to each other, not just individually.
+      Now look at what you revealed, not just what you drew.
+      The story is in the pattern of what opened and what stayed hidden.
     </p>
   `;
 }
 
-// 🧿 Attach click AFTER page loads
+// 🧿 Attach click
 window.addEventListener("DOMContentLoaded", () => {
   const deckEl = document.getElementById("deck");
 
@@ -127,3 +143,4 @@ window.addEventListener("DOMContentLoaded", () => {
 window.shuffleDeck = shuffleDeck;
 window.startReading = startReading;
 window.drawCard = drawCard;
+window.toggleReveal = toggleReveal;
