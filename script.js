@@ -1,5 +1,6 @@
 console.log("🌙 script.js loaded successfully");
 
+// 🃏 FULL 78-CARD DECK
 const deck = [
   // 🌙 MAJOR ARCANA (22)
   { name: "The Fool 🌙", meaning: "Beginnings, innocence, trust, stepping into the unknown.", revealed: false },
@@ -15,7 +16,7 @@ const deck = [
   { name: "Wheel of Fortune 🎡", meaning: "Cycles, fate, change, turning points.", revealed: false },
   { name: "Justice ⚖️", meaning: "Truth, fairness, accountability.", revealed: false },
   { name: "The Hanged Man 🪢", meaning: "Pause, surrender, new perspective.", revealed: false },
-  { name: "Death 🖤", meaning: "Endings, transformation, rebirth.", revealed: false },
+  { name: "Death 🖤", meaning: "Transformation, endings, rebirth.", revealed: false },
   { name: "Temperance 🌈", meaning: "Balance, healing, moderation.", revealed: false },
   { name: "The Devil 🐍", meaning: "Attachment, temptation, shadow self.", revealed: false },
   { name: "The Tower ⚡", meaning: "Sudden change, collapse, awakening.", revealed: false },
@@ -25,7 +26,7 @@ const deck = [
   { name: "Judgement 🔔", meaning: "Awakening, reflection, rebirth.", revealed: false },
   { name: "The World 🌍", meaning: "Completion, fulfillment, wholeness.", revealed: false },
 
-  // 💧 CUPS (emotion)
+  // 💧 CUPS
   { name: "Ace of Cups 💧", meaning: "New emotional beginning, love.", revealed: false },
   { name: "2 of Cups 💧", meaning: "Connection, partnership.", revealed: false },
   { name: "3 of Cups 💧", meaning: "Friendship, celebration.", revealed: false },
@@ -37,7 +38,7 @@ const deck = [
   { name: "9 of Cups 💧", meaning: "Satisfaction, wishes fulfilled.", revealed: false },
   { name: "10 of Cups 💧", meaning: "Emotional harmony, happiness.", revealed: false },
 
-  // 🔥 WANDS (energy)
+  // 🔥 WANDS
   { name: "Ace of Wands 🔥", meaning: "Inspiration, new spark.", revealed: false },
   { name: "2 of Wands 🔥", meaning: "Planning, future vision.", revealed: false },
   { name: "3 of Wands 🔥", meaning: "Expansion, progress.", revealed: false },
@@ -49,7 +50,7 @@ const deck = [
   { name: "9 of Wands 🔥", meaning: "Resilience, persistence.", revealed: false },
   { name: "10 of Wands 🔥", meaning: "Burden, responsibility.", revealed: false },
 
-  // ⚔️ SWORDS (mind)
+  // ⚔️ SWORDS
   { name: "Ace of Swords ⚔️", meaning: "Clarity, truth.", revealed: false },
   { name: "2 of Swords ⚔️", meaning: "Indecision, blocked emotions.", revealed: false },
   { name: "3 of Swords ⚔️", meaning: "Heartbreak, sorrow.", revealed: false },
@@ -61,7 +62,7 @@ const deck = [
   { name: "9 of Swords ⚔️", meaning: "Anxiety, worry.", revealed: false },
   { name: "10 of Swords ⚔️", meaning: "Endings, collapse.", revealed: false },
 
-  // 🌿 PENTACLES (material)
+  // 🌿 PENTACLES
   { name: "Ace of Pentacles 🌿", meaning: "New opportunity, stability.", revealed: false },
   { name: "2 of Pentacles 🌿", meaning: "Balance, juggling.", revealed: false },
   { name: "3 of Pentacles 🌿", meaning: "Teamwork, skill.", revealed: false },
@@ -78,7 +79,7 @@ let shuffledDeck = [];
 let currentSpread = [];
 let spreadSize = 0;
 
-// 🔮 Shuffle deck
+// 🔮 Shuffle
 function shuffleDeck() {
   shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
   currentSpread = [];
@@ -123,19 +124,28 @@ function drawCard() {
   }
 }
 
-// ✨ Toggle reveal
+// ✨ Flip toggle
 function toggleReveal(index) {
   currentSpread[index].revealed = !currentSpread[index].revealed;
   renderSpread();
 }
 
-// ✨ Render spread
+// 🃏 Render spread WITH FLIP EFFECT
 function renderSpread() {
   document.getElementById("spread").innerHTML = currentSpread
     .map((card, index) => `
-      <div class="card" onclick="toggleReveal(${index})">
-        <h3>${card.name}</h3>
-        <p>${card.revealed ? card.meaning : "Click to reveal ✨"}</p>
+      <div class="card ${card.revealed ? "flipped" : ""}" onclick="toggleReveal(${index})">
+        <div class="card-inner">
+
+          <div class="card-front">
+            <h3>${card.name}</h3>
+          </div>
+
+          <div class="card-back">
+            <p>${card.meaning}</p>
+          </div>
+
+        </div>
       </div>
     `)
     .join("");
@@ -146,13 +156,12 @@ function showSummary() {
   document.getElementById("summary").innerHTML = `
     <h2>✨ Reading Complete</h2>
     <p>
-      The pattern is now fully visible across all 78 archetypes.
-      Trust the relationships between the cards.
+      The full 78-card field has been activated. Patterns are now alive across the spread.
     </p>
   `;
 }
 
-// 🧿 Click deck
+// 🧿 Deck click
 window.addEventListener("DOMContentLoaded", () => {
   const deckEl = document.getElementById("deck");
   if (deckEl) deckEl.addEventListener("click", drawCard);
