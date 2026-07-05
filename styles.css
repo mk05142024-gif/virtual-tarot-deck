@@ -5,25 +5,16 @@ body {
   text-align: center;
   overflow-x: hidden;
 
-  /* 🌌 STRONG COSMIC BACKGROUND */
   background: radial-gradient(circle at top, #2a0f3d, #070712);
   animation: cosmicPulse 6s ease-in-out infinite;
 }
 
-/* 🌙 BREATHING UNIVERSE EFFECT */
 @keyframes cosmicPulse {
-  0% {
-    background: radial-gradient(circle at top, #2a0f3d, #070712);
-  }
-  50% {
-    background: radial-gradient(circle at top, #3a1a5c, #05040a);
-  }
-  100% {
-    background: radial-gradient(circle at top, #2a0f3d, #070712);
-  }
+  0% { background: radial-gradient(circle at top, #2a0f3d, #070712); }
+  50% { background: radial-gradient(circle at top, #3a1a5c, #05040a); }
+  100% { background: radial-gradient(circle at top, #2a0f3d, #070712); }
 }
 
-/* ✨ STRONG STARFIELD (more visible now) */
 body::before {
   content: "";
   position: fixed;
@@ -40,14 +31,12 @@ body::before {
   to { transform: translateY(-300px); }
 }
 
-/* 🌙 APP LAYER */
 .app {
   padding: 40px;
   position: relative;
   z-index: 2;
 }
 
-/* ✨ GLOWING TITLE */
 h1 {
   font-weight: 300;
   letter-spacing: 2px;
@@ -55,17 +44,7 @@ h1 {
   text-shadow: 0 0 25px #ff7ac8, 0 0 40px #7a5cff;
 }
 
-.subtitle {
-  opacity: 0.7;
-  margin-top: -10px;
-  margin-bottom: 30px;
-}
-
-.controls {
-  margin-bottom: 30px;
-}
-
-/* 🔮 BUTTONS */
+/* 🌙 BUTTONS */
 button {
   padding: 12px 18px;
   margin: 6px;
@@ -74,24 +53,21 @@ button {
   cursor: pointer;
   background: linear-gradient(135deg, #ff7ac8, #7a5cff);
   color: white;
-  font-size: 14px;
   box-shadow: 0 0 20px rgba(122, 92, 255, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(255, 122, 200, 0.4);
 }
 
-/* 🌌 TABLE AREA */
+/* 🌌 TABLE */
 #table {
   position: relative;
   min-height: 400px;
   margin-top: 20px;
 }
 
-/* 🃏 DECK */
 #deck {
   width: 120px;
   height: 180px;
@@ -99,7 +75,6 @@ button:hover {
   border-radius: 12px;
   background: linear-gradient(135deg, #2a1140, #3a1a5c);
   box-shadow: 0 0 40px rgba(255, 122, 200, 0.25);
-  position: relative;
 }
 
 /* 🌙 SPREAD */
@@ -111,14 +86,32 @@ button:hover {
   margin-top: 40px;
 }
 
-/* 🃏 CARD FLIP SYSTEM */
+/* 🃏 FLOATING CARD SYSTEM */
 .card {
   width: 120px;
   height: 180px;
   perspective: 1000px;
   cursor: pointer;
+
+  /* ✨ NEW FLOATING MOTION */
+  animation: floatCard 6s ease-in-out infinite;
 }
 
+/* stagger motion so cards don't move in sync */
+.card:nth-child(2n) {
+  animation-duration: 7s;
+}
+.card:nth-child(3n) {
+  animation-duration: 8s;
+}
+
+@keyframes floatCard {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* FLIP CORE */
 .card-inner {
   width: 100%;
   height: 100%;
@@ -131,7 +124,7 @@ button:hover {
   transform: rotateY(180deg);
 }
 
-/* FRONT */
+/* FACES */
 .card-front,
 .card-back {
   position: absolute;
@@ -146,13 +139,11 @@ button:hover {
   text-align: center;
 }
 
-/* FRONT FACE */
 .card-front {
   background: linear-gradient(180deg, #ffb3e6, #7a5cff);
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* BACK FACE */
 .card-back {
   background: linear-gradient(180deg, #1b102b, #2d1b45);
   transform: rotateY(180deg);
