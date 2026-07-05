@@ -1,18 +1,16 @@
 console.log("🌙 script.js loaded successfully");
 
 const deck = [
-  "The Dreamer 🌙",
-  "The Spark ✨",
-  "The Mirror 🪞",
-  "The Bloom 🌸",
-  "The Flame 🔥",
-  "The Tide 🌊",
-  "The Crown 👑",
-  "The Whisper 🕊️",
-  "The Rose Veil 🌹",
-  "The Night Bloom 🌌",
-  "The Heart 💗",
-  "The Starling ⭐"
+  "The Fool 🌙",
+  "The Magician ✨",
+  "The High Priestess 🪞",
+  "The Empress 🌸",
+  "The Emperor 👑",
+  "The Lovers 💗",
+  "The Chariot 🌊",
+  "The Star ⭐",
+  "The Moon 🌙",
+  "The Sun ☀️"
 ];
 
 let shuffledDeck = [];
@@ -90,6 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
     deckEl.addEventListener("click", drawCard);
   }
 });
+
 window.shuffleDeck = shuffleDeck;
 window.startReading = startReading;
 window.drawCard = drawCard;
