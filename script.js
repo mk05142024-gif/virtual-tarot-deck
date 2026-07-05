@@ -90,3 +90,6 @@ window.addEventListener("DOMContentLoaded", () => {
     deckEl.addEventListener("click", drawCard);
   }
 });
+window.shuffleDeck = shuffleDeck;
+window.startReading = startReading;
+window.drawCard = drawCard;
